@@ -273,3 +273,11 @@ INEGI (2020). Censo de Población y Vivienda 2020.
 Comunidad R y recursos de AI por la ayuda en visualización avanzada.
 
 Última actualización: Mayo 2025
+
+📬 Contacto
+¿Comentarios, sugerencias o colaboraciones?
+Puedes contactarme a través de:
+
+Mi perfil de LinkedIn
+
+📧 reyes061295@gmail.com
