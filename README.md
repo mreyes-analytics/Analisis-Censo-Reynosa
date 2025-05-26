@@ -278,6 +278,6 @@ Comunidad R y recursos de AI por la ayuda en visualización avanzada.
 ¿Comentarios, sugerencias o colaboraciones?
 Puedes contactarme a través de:
 
-Mi perfil de LinkedIn
+-[Mi perfil de LinkedIn](https://www.linkedin.com/in/marb951206/)
 
 📧 reyes061295@gmail.com
