@@ -80,6 +80,7 @@ Estos índices permiten comparar condiciones materiales y de servicios entre AGE
 Se implementaron boxplots por nivel socioeconómico para validar la capacidad discriminante de los índices.
 
 Ejemplo visual: el índice de tecnología muestra desigualdades claras entre clases altas y bajas.
+![](output/02_indices_sinteticos.png)
 
 ¿Por qué?
 Los índices permiten análisis focalizados para políticas públicas o segmentación de mercado.
@@ -110,6 +111,7 @@ Densidad de habitantes
 Tasa de ocupación de viviendas
 
 Visualización: Gráfico de dispersión ocupantes promedio vs. densidad poblacional, coloreado por tasa de ocupación.
+![](output/03_ocupantes_vs_densidad.png)
 
 ¿Por qué?
 Identifica áreas con posible hacinamiento o infrautilización, útil para focalizar políticas de vivienda o estrategias comerciales.
@@ -153,8 +155,9 @@ Score_Total = (
 )
 Clasificación de AGEBs en 5 niveles (quintiles):
 Muy alto potencial, Alto, Medio, Bajo, Muy bajo.
+![](output/04_hist_score_total.png)
 
-6. Visualización geoespacial interactiva
+10. Visualización geoespacial interactiva
 Se utiliza leaflet para crear mapas interactivos.
 
 Cada AGEB se colorea por categoría de potencial y muestra popup con información relevante.
@@ -186,11 +189,42 @@ library(sf)
 
 # 1. Cargar el shapefile de AGEBs urbanos de Reynosa
 mapa_reyno <- st_read("reynosa_map.shp")
+![](output/05_mapa_geom_reynosa.png)
 
-# 2. Transformar las coordenadas al sistema WGS84
+# 2. Mapa coloreado por categorías
+# Visualizar el mapa de Reynosa
+  
+mapa_reyno <- reynosa_map %>%
+  left_join(reyno_ageb_categorizado, by = c("CVE_AGEB" = "AGEB"))
+
+
+# Recrear la columna de categorías como factor con orden explícito
+# Imprimir todos los valores únicos
+
+# Eliminar NA antes de graficar
+mapa_reyno <- mapa_reyno %>%
+  filter(!is.na(Categoria_Potencial))
+
+mapa_reyno$Categoria_Potencial <- factor(
+  mapa_reyno$Categoria_Potencial, 
+  levels = c(
+    "Muy Bajo Potencial", 
+    "Bajo Potencial", 
+    "Potencial Medio", 
+    "Alto Potencial", 
+    "Muy Alto Potencial"
+  )
+)
+
+# Mapa directo
+plot(mapa_reyno["Categoria_Potencial"])
+![](output/06_mapa_categorias_potencial.png)
+
+
+# 3. Transformar las coordenadas al sistema WGS84
 mapa_reyno_transformado <- st_transform(mapa_reyno, crs = 4326)
 
-# 3. Enriquecer con información y crear popups
+# 4. Enriquecer con información y crear popups
 mapa_reyno_leaflet <- mapa_reyno_transformado %>%
   left_join(reyno_ageb_categorizado, by = c("CVE_AGEB" = "AGEB")) %>%
   mutate(
@@ -214,22 +248,31 @@ mapa_reyno_leaflet <- mapa_reyno_transformado %>%
 ¿Por qué transformar a WGS84?
 La mayoría de los mapas interactivos en la web (incluyendo Leaflet y OpenStreetMap) requieren que los datos estén en el sistema de coordenadas WGS84 (EPSG:4326), que usa latitud y longitud en grados decimales. Si el shapefile original está en otro sistema de referencia (como Lambert, UTM, etc.), los polígonos no se mostrarán correctamente o aparecerán en otro lugar del mundo.
 
+### Mapa interactivo por categoría de potencial
+[Ver Mapa Leaflet por categoría](output/07_mapa_leaflet_categorias.html)
 
-7. Reflexión personal y valor profesional
-Aunque originalmente no dominaba la visualización geoespacial ni todo el stack de R, este proyecto evidencia mi capacidad de:
+### Mapa interactivo de calor por Score Total
+[Ver Mapa Leaflet Score Total](output/08_mapa_leaflet_score.html)
 
-Aprender rápidamente nuevas herramientas y explorar el uso de nuevos paquetes.
 
-Integrar recursos de IA y documentación oficial de fuentes secundarias de información.
+12. Reflexión personal y valor profesional
+Este proyecto representa mucho más que un ejercicio técnico: es testimonio de mi capacidad de adaptación y aprendizaje autónomo frente a nuevos retos.
 
-Llevar un análisis de datos desde la recolección, transformación, carga y eso hasta la visualización avanzada e interpretación para toma de decisiones.
+Iniciativa propia: La motivación para abordar la geovisualización espacial y el análisis territorial surgió enteramente de mi interés por ampliar mis competencias, aún sin experiencia previa directa en visualización geoespacial ni el stack completo de R.
 
-8. Consideraciones y utilidad
-La documentación y scripts pueden ser útiles para planners, analistas y cualquier persona interesada en el análisis urbano, social y de mercado en México.
+Adaptabilidad y aprendizaje ágil: Fui capaz de incorporar rápidamente nuevas herramientas, paquetes y metodologías, enfrentando retos técnicos y conceptuales para lograr resultados profesionales.
 
-La metodología es replicable para otras ciudades.
+Integración de IA y fuentes de información: Aproveché recursos de IA como herramienta de consulta y resolución de problemas, combinando documentación oficial y buenas prácticas para acelerar el desarrollo.
 
-9. Referencias y agradecimientos
+Dominio del proceso de datos (ETL): Llevé el proyecto desde la recopilación y limpieza de datos, hasta el diseño de indicadores, integración y transformación de bases, y la creación de visualizaciones avanzadas.
+
+Enfoque en toma de decisiones basada en datos: Cada paso del análisis estuvo orientado a producir insights útiles y accionables para la planeación estratégica, la intervención social y la toma de decisiones informadas en contextos urbanos.
+
+En suma, este trabajo evidencia mi capacidad de autogestión, aprendizaje continuo y orientación a resultados, integrando nuevas tecnologías y métodos para resolver necesidades reales y aportar valor desde el análisis de datos.
+
+
+
+13. Referencias y agradecimientos
 INEGI (2020). Censo de Población y Vivienda 2020.
 
 Comunidad R y recursos de AI por la ayuda en visualización avanzada.
