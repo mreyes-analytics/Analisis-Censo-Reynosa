@@ -248,11 +248,14 @@ mapa_reyno_leaflet <- mapa_reyno_transformado %>%
 ¿Por qué transformar a WGS84?
 La mayoría de los mapas interactivos en la web (incluyendo Leaflet y OpenStreetMap) requieren que los datos estén en el sistema de coordenadas WGS84 (EPSG:4326), que usa latitud y longitud en grados decimales. Si el shapefile original está en otro sistema de referencia (como Lambert, UTM, etc.), los polígonos no se mostrarán correctamente o aparecerán en otro lugar del mundo.
 
-### Mapa interactivo por categoría de potencial
-[Ver Mapa Leaflet por categoría](output/07_mapa_leaflet_categorias.html)
+### Visualización de Mapas Interactivos
 
-### Mapa interactivo de calor por Score Total
-[Ver Mapa Leaflet Score Total](output/08_mapa_leaflet_score.html)
+Para visualizar los mapas interactivos generados en el análisis:
+
+> ⚠️ **Importante:** Los archivos `.html` de mapas interactivos deben **descargarse** y abrirse localmente en tu navegador para funcionar correctamente.
+
+- [Descargar mapas interactivos desde Google Drive](https://drive.google.com/drive/folders/1OP6rpwfNss3tTkpkYsbOKHeHpo82teTe)
+- [Archivos HTML individuales en GitHub](output/07_mapa_leaflet_categorias.html), [output/08_mapa_leaflet_score.html](output/08_mapa_leaflet_score.html)
 
 
 12. Reflexión personal y valor profesional
