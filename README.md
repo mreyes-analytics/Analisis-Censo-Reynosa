@@ -74,6 +74,7 @@ Creación de 5 índices sintéticos (IIB, IEH, IBD, IM, ITE), cada uno represent
 
 Importancia:
 Estos índices permiten comparar condiciones materiales y de servicios entre AGEBs de forma estandarizada, y sirven de base para una clasificación socioeconómica propia usando percentiles (25, 50, 75).
+![](output/01_distribucion_nivel_socioeconomico.png)
 
 6. Validación y visualización de índices
 Se implementaron boxplots por nivel socioeconómico para validar la capacidad discriminante de los índices.
@@ -97,7 +98,7 @@ Valores cercanos a cero: El AGEB cumple el estándar básico; prioridad baja a m
 
 Valores altos y positivos: El AGEB presenta carencias, por lo que sí es prioritario para acciones de mejora o inversión.
 
-3. Desocupación de vivienda y hacinamiento
+7. Desocupación de vivienda y hacinamiento
 Desocupación: Se clasificó cada AGEB en Baja, Media, Alta o Muy Alta según el porcentaje de viviendas deshabitadas.
 
 Hacinamiento:
@@ -113,12 +114,12 @@ Visualización: Gráfico de dispersión ocupantes promedio vs. densidad poblacio
 ¿Por qué?
 Identifica áreas con posible hacinamiento o infrautilización, útil para focalizar políticas de vivienda o estrategias comerciales.
 
-4. Análisis económico poblacional
+8. Análisis económico poblacional
 Cálculo de PEA, tasas de participación y desempleo por AGEB, diferenciadas por sexo.
 
 Integración de todos los indicadores demográficos y económicos en un solo dataframe por AGEB (reynx_analisis_completo).
 
-5. Score de potencial territorial (construcción de índice compuesto)
+9. Score de potencial territorial (construcción de índice compuesto)
 
 Se sintetizan todos los indicadores relevantes en un solo "Score_Total" para cada AGEB.
 
