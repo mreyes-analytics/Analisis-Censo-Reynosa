@@ -192,18 +192,8 @@ mapa_reyno <- st_read("reynosa_map.shp")
 ![](output/05_mapa_geom_reynosa.png)
 
 # 2. Mapa coloreado por categorías
-# Visualizar el mapa de Reynosa
-  
 mapa_reyno <- reynosa_map %>%
   left_join(reyno_ageb_categorizado, by = c("CVE_AGEB" = "AGEB"))
-
-
-# Recrear la columna de categorías como factor con orden explícito
-# Imprimir todos los valores únicos
-
-# Eliminar NA antes de graficar
-mapa_reyno <- mapa_reyno %>%
-  filter(!is.na(Categoria_Potencial))
 
 mapa_reyno$Categoria_Potencial <- factor(
   mapa_reyno$Categoria_Potencial, 
