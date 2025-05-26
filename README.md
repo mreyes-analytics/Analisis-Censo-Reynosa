@@ -235,6 +235,8 @@ mapa_reyno_leaflet <- mapa_reyno_transformado %>%
       "Potencial de Mejoras: ", round(Indice_Potencial_Mejoras, 2)
     )
   )
+
+
 ¿Por qué transformar a WGS84?
 La mayoría de los mapas interactivos en la web (incluyendo Leaflet y OpenStreetMap) requieren que los datos estén en el sistema de coordenadas WGS84 (EPSG:4326), que usa latitud y longitud en grados decimales. Si el shapefile original está en otro sistema de referencia (como Lambert, UTM, etc.), los polígonos no se mostrarán correctamente o aparecerán en otro lugar del mundo.
 
